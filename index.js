@@ -1,4 +1,6 @@
 import { tweetsData } from "./data.js";
+import { v4 as uuidv4 } from "https://jspm.dev/uuid";
+console.log(uuidv4()); // ⇨ '1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed'
 
 const tweetInput = document.getElementById("tweet-input");
 const feed = document.getElementById("feed");
@@ -52,7 +54,18 @@ function handleReplyClick(replyId) {
 }
 
 function handleTweetBtnClick() {
-  console.log(tweetInput.value);
+  tweetsData.unshift({
+    handle: `@ChuckMe`,
+    profilePic: `images/chucknorris.jpeg`,
+    likes: 0,
+    retweets: 0,
+    tweetText: `${tweetInput.value}`,
+    replies: [],
+    isLiked: false,
+    isRetweeted: false,
+    uuid: uuidv4(),
+  });
+  render();
 }
 
 function getFeedHtml() {
