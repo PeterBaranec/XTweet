@@ -54,18 +54,21 @@ function handleReplyClick(replyId) {
 }
 
 function handleTweetBtnClick() {
-  tweetsData.unshift({
-    handle: `@ChuckMe`,
-    profilePic: `images/chucknorris.jpeg`,
-    likes: 0,
-    retweets: 0,
-    tweetText: `${tweetInput.value}`,
-    replies: [],
-    isLiked: false,
-    isRetweeted: false,
-    uuid: uuidv4(),
-  });
-  render();
+  if (tweetInput.value) {
+    tweetsData.unshift({
+      handle: `@ChuckMe`,
+      profilePic: `images/chucknorris.jpeg`,
+      likes: 0,
+      retweets: 0,
+      tweetText: `${tweetInput.value}`,
+      replies: [],
+      isLiked: false,
+      isRetweeted: false,
+      uuid: uuidv4(),
+    });
+    render();
+    tweetInput.value = "";
+  }
 }
 
 function getFeedHtml() {
