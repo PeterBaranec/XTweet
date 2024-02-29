@@ -1,9 +1,5 @@
 import { tweetsData } from "./data.js";
 import { v4 as uuidv4 } from "https://jspm.dev/uuid";
-console.log(uuidv4()); // ⇨ '1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed'
-
-const tweetInput = document.getElementById("tweet-input");
-const feed = document.getElementById("feed");
 
 document.addEventListener("click", function (e) {
   if (e.target.dataset.like) {
@@ -54,6 +50,7 @@ function handleReplyClick(replyId) {
 }
 
 function handleTweetBtnClick() {
+  const tweetInput = document.getElementById("tweet-input");
   if (tweetInput.value) {
     tweetsData.unshift({
       handle: `@ChuckMe`,
@@ -135,6 +132,7 @@ function getFeedHtml() {
 }
 
 function render() {
+  const feed = document.getElementById("feed");
   feed.innerHTML = getFeedHtml();
 }
 
